@@ -66,13 +66,10 @@ class CNNInceptionV3ContextClassifier(ContextClassifier):
                 period=1
             ))
 
-        self.classifier.fit_generator(
+        self.classifier.fit(
             self.training_generator,
-            samples_per_epoch=self.training_sample_count,
-            nb_epoch=epochs,
+            epochs=epochs,
             validation_data=self.validation_generator,
-            nb_val_samples=self.validation_sample_count,
-            class_weight="auto",
             callbacks=callbacks
         )
 
